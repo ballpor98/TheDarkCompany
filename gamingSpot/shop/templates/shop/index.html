@@ -1,0 +1,14 @@
+<div>
+    <h1><a href="/">gamingSpot</a></h1>
+</div>
+
+{% for product in all_product %}
+<div>
+    <p>name {{ product.name }}</p>
+    <p>brand {{ product.brand}}</p>
+    <p>price {{product.price}} </p>
+    {% for image in product.image_set.all %}
+        {{ image.image.url}}
+    {% endfor %}
+</div>
+{% endfor %}
