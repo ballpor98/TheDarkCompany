@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'shop.apps.ShopConfig',
+    #'shop.apps.ShopConfig',
+    'shop',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,5 +125,5 @@ USE_TZ = True
 # BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/static"
-MEDIA_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/media"
+STATIC_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/static"
+MEDIA_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/media"
