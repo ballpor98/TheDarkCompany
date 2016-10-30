@@ -10,7 +10,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=50)
     price = models.IntegerField()
     lates_update = models.DateTimeField()
-
+    image = models.ImageField(upload_to = 'images/product/')
 '''class Member(models.Model):
     username = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
@@ -29,6 +29,6 @@ class Order(models.Model):
     address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=5)
 
-class Image(models.Model):
+'''class Image(models.Model):
     product = models.ForeignKey(Product,related_name='image')
-    image = models.ImageField(upload_to = 'images/product/')
+    image = models.ImageField(upload_to = 'images/product/')'''
