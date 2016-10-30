@@ -11,12 +11,12 @@ class Product(models.Model):
     price = models.IntegerField()
     lates_update = models.DateTimeField()
 
-class Member(models.Model):
+'''class Member(models.Model):
     username = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     register_date = models.DateField()
-
+'''
 class Order(models.Model):
     ORDER_STATUS=(
         ('P','Pending'),
@@ -26,6 +26,9 @@ class Order(models.Model):
     status = models.CharField(max_length=1,choices=ORDER_STATUS)
     date = models.DateTimeField()
     total = models.DecimalField(max_digits=7,decimal_places=2)
-    member = models.ForeignKey(Member,on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=5)
+
+class Image(models.Model):
+    product = models.ForeignKey(Product,related_name='image')
+    image = models.ImageField(upload_to = 'images/product/')
