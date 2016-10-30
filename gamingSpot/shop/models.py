@@ -10,7 +10,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=50)
     price = models.IntegerField()
     lates_update = models.DateTimeField()
-    image = models.ImageField(upload_to = 'images/product/')
+    image = models.ImageField(upload_to = 'images/product/',
+        default='images/product/no_img.png')
 '''class Member(models.Model):
     username = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)

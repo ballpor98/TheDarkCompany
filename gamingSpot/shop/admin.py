@@ -5,14 +5,14 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-class ImageInline(admin.StackedInline):
+'''class ImageInline(admin.StackedInline):
     model = Image
-    extra = 1
+    extra = 1'''
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name','brand','price','lates_update')
     list_filter = ['brand','lates_update']
-    inlines = [ImageInline]
+    #inlines = [ImageInline]
 
 
 admin.site.register(Product,ProductAdmin)

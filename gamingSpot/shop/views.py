@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 
-from .models import Product, Order, Image
+from .models import *
 
 
 class IndexView(generic.ListView):
