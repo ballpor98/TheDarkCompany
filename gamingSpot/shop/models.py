@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -30,6 +32,13 @@ class Order(models.Model):
     address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=5)
 
-'''class Image(models.Model):
-    product = models.ForeignKey(Product,related_name='image')
-    image = models.ImageField(upload_to = 'images/product/')'''
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+
+    def __str__(self):  
+        return "%s's profile" % self.user
+def create_user_profile(sender, instance, created, **kwargs):  
+    if created:  
+        profile, created = UserProfile.objects.get_or_create(user=instance)  
+
+post_save.connect(create_user_profile, sender=User) 
