@@ -11,7 +11,7 @@ class Product(models.Model):
     price = models.IntegerField()
     lates_update = models.DateTimeField()
     image = models.ImageField(upload_to = 'images/product/',
-        default='images/product/no_img.png')
+        default='images/product/no_img.jpg')
 '''class Member(models.Model):
     username = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
