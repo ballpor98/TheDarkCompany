@@ -1,12 +1,25 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
-    <main style="color:white;">
-        <h2>Login</h2>
+    <main style="color:grey;">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" style="color:black;">Login</button>
+            <div class="container">
+            {% for field in form %}
+                <div class="row">
+                    <div class="col-sm-2" style="color:white;">
+                        {{ field.label }}
+                    </div>
+                    <div class="col-sm-3">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <br>
+            <div class="col-sm-3">
+            <button type="submit" class="save btn btn-default" style="color:grey;">Login</button>
+            </div>
         </form>    
     </main>
 {% endblock %}

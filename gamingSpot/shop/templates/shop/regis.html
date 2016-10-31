@@ -1,4 +1,21 @@
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+{% extends 'shop/base.html' %}
+
+{% block content %}
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        <div class="container">
+        {% for field in form %}
+            <div class="row">
+                <div class="col-sm-2" style="color:white;">
+                    {{field.label }}
+                </div>
+                <div class="col-sm-3">
+                    {{field}}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <br>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+{% endblock %}
