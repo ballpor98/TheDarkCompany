@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+{%block content %}
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-body">
+<a href="{% url 'shop:detail' product.id %}">
+{% if product.image %}
+<img src="{{ product.image.url }}" class="img-responsive">
+{% else %}
+<h3>No image to display</h3>
+{% endif %}
+</a>
+<h2> {{ product.name }} </h2>
+<h4> {{ product.brand }} </h4>
+<h4> {{ product.price }} BAHT</h4>
+<a class="btn btn-primary btn-sm" role="button">
+<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; ADD TO CART
+</a>
+</div>
+</div>
+</div>
+<div class="col-sm-7">
+<div class="panel panel-default">
+<div class="panel-body">
+<h2> DETAIL </h2>
+<h2> SPECIFICATION </h2>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,14 +1,19 @@
-<div>
-    <h1><a href="/">gamingSpot</a></h1>
-</div>
+{% extends 'shop/base.html' %}
 
-{% for product in all_product %}
-<div>
-    <p>name {{ product.name }}</p>
-    <p>brand {{ product.brand}}</p>
-    <p>price {{product.price}} </p>
-    {% for image in product.image_set.all %}
-        {{ image.image.url}}
+{% block content %}
+    {% for product in all_product %}
+    <div class="col-sm-4">.
+        <div class="thumbnail">
+            <a href="{% url 'shop:detail' product.id %}">
+                    <img src = "{{product.image.url}}" class="img-responsive">
+            </a>
+            <div class="caption">
+                <h2> {{ product.name }} </h2>
+                <h4> {{ product.brand }}</h4>
+                <a href="{% url 'shop:detail' product.id %}" class="btn btn-primary btn-sm" role="button">View Detail</a>
+            </div>
+        </div>
+    </div>
+    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
     {% endfor %}
-</div>
-{% endfor %}
+{% endblock %}
