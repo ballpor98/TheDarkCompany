@@ -39,16 +39,22 @@
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Contact us
         </a>
     </li>
+    {% if not user.is_authenticated %}
     <li>
         <a role="button" href="{% url 'login' %}">
             <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp; Login
         </a>
+    </li>
+    {% else %}
+    <li>
+        <a class="navbar-brand">{{ user.username }}</a>
     </li>
     <li>
         <a role="button" href="{% url 'logout' %}">
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
         </a>
     </li>
+    {% endif %}
     </ul>
 </div>
 
@@ -59,7 +65,7 @@
 
     <div class="content container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-15">
                 {% block content %}
                 {% endblock %}
             </div>
