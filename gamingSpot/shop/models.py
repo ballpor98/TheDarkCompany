@@ -14,6 +14,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to = 'images/product/',
     default='images/product/no_img.jpg')
     categories = models.CharField(max_length=50) 
+    def __str__(self):
+        return self.name
 
 def product_directory_path(instance, filename):
     #file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
@@ -22,6 +24,8 @@ def product_directory_path(instance, filename):
 class Description(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description_file = models.FileField(upload_to=product_directory_path)
+    def __str__(self):
+        return self.product.name
 
 class Order(models.Model):
     ORDER_STATUS=(
