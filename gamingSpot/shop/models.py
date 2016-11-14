@@ -6,25 +6,20 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 
+def product_directory_path(instance, filename):
+    #file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'description/product_{0}/{1}'.format(instance.product.id, filename)
+
 class Product(models.Model):
     name = models.CharField(max_length=50)
     brand = models.CharField(max_length=50)
     price = models.IntegerField()
     lates_update = models.DateTimeField()
     image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
+    description_file = models.FileField(upload_to=product_directory_path, default='description/no_description.txt')
     categories = models.CharField(max_length=50,default='no') 
     def __str__(self):
         return self.name
-
-def product_directory_path(instance, filename):
-    #file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'description/product_{0}/{1}'.format(instance.product.id, filename)
-
-class Description(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    description_file = models.FileField(upload_to=product_directory_path)
-    def __str__(self):
-        return self.product.name
 
 class Order(models.Model):
     ORDER_STATUS=(
