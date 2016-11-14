@@ -1,55 +1,132 @@
 {% extends 'shop/base.html' %}
+{% load staticfiles %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}"/>
+    <script src="{% static 'shop/js/bootstrap-carousel.js' %}"></script>
+</head>
 
 {% block content %}
-    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+<div id="mycarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#home-carousel-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#home-carousel" data-slide-to="1"></li>
+        <li data-target="#home-carousel" data-slide-to="2"></li>   
+        <li data-target="#home-carousel" data-slide-to="3"></li>
+        <li data-target="#home-carousel" data-slide-to="4"></li>     
+    </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-        <img src="http://cdn.wallpapersafari.com/59/90/8Mxkjz.jpg" alt="First Image">
-    </div>
-    <div class="item">
-        <img src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg" alt="Second Image">
-    </div>
-    <div class="item">
-        <img src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg" alt="Third Image">
-    </div>
-    <div class="item">
-        <img src="http://cdn.wallpapersafari.com/33/64/w0rDv2.jpg" data-color="lightgreen" alt="Fourth Image">
-    </div>
-    <div class="item">
-        <img src="http://wallpapercave.com/wp/6I1chqs.jpg" data-color="tomato" alt="Fifth Image">
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-    {% for product in all_product %}
-    <div class="col-md-3">.
-        <div class="thumbnail">
-            <a href="{% url 'shop:detail' product.id %}">
-                    <div class="item-image">
-                        <img src = "{{product.image.url}}" class="img-responsive" style="width:450px;height:250px">
-                    </div>
-            </a>
-            <div class="caption">
-                <h3> {{ product.name }} </h3>
-                <h4> {{ product.brand }}</h4>
-                <a href="{% url 'shop:detail' product.id %}" class="btn btn-primary btn-sm" role="button">View Detail</a>
-            </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="http://cdn.wallpapersafari.com/59/90/8Mxkjz.jpg" alt="First Image">
+        </div>
+        <div class="item">
+            <img src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg" alt="Second Image">
+        </div>
+        <div class="item">
+            <img src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg" alt="Third Image">
+        </div>
+        <div class="item">
+            <img src="http://cdn.wallpapersafari.com/33/64/w0rDv2.jpg" data-color="lightgreen" alt="Fourth Image">
+        </div>
+        <div class="item">
+            <img src="http://wallpapercave.com/wp/6I1chqs.jpg" data-color="tomato" alt="Fifth Image">
         </div>
     </div>
-    {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
-    {% endfor %}
-    <div class="before-footer">
-    </div>
-{% endblock %}
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<h1 align="center"> TRENDING PRODUCT </h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail" >                    
+                    <img src="http://placehold.it/650x450&text=Product1" class="img-responsive">
+                    <div class="caption">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+                                <h3> Product 1 </h3>
+                            </div>
+                            <div class="col-md-6 col-xs-6 price">
+                                <h3>
+                                    <label>$649.99</label></h3>
+                                </div>
+                            </div>
+                            <p>Description 1</p>
+                            <div class="row">                            
+                                <div class="col-md-12">
+                                    <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                                </div>
+                            </div>
+
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail" >                    
+                        <img src="http://placehold.it/650x450&text=Product2" class="img-responsive">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <h3> Product 2 </h3>
+                                </div>
+                                <div class="col-md-6 col-xs-6 price">
+                                    <h3>
+                                        <label>$749.99</label></h3>
+                                    </div>
+                                </div>
+                                <p>Description 2</p>
+                                <div class="row">                            
+                                    <div class="col-md-12">
+                                        <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                                    </div>
+                                </div>
+
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" >                    
+                            <img src="http://placehold.it/650x450&text=Product3" class="img-responsive">
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <h3> Product 3</h3>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <h3>
+                                            <label>$749.00</label></h3>
+                                        </div>
+                                    </div>
+                                    <p>Description 3</p>
+                                    <div class="row">                            
+                                        <div class="col-md-12">
+                                            <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                                        </div>
+                                    </div>
+
+                                    <p> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> 
+
+                </div>
+            </div>
+            {% endblock %}
