@@ -11,9 +11,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=50)
     price = models.IntegerField()
     lates_update = models.DateTimeField()
-    image = models.ImageField(upload_to = 'images/product/',
-    default='images/product/no_img.jpg')
-    categories = models.CharField(max_length=50) 
+    image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
+    categories = models.CharField(max_length=50,default='no') 
     def __str__(self):
         return self.name
 
