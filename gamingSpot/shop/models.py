@@ -17,7 +17,7 @@ class Product(models.Model):
     lates_update = models.DateTimeField()
     image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
     description_file = models.FileField(upload_to=product_directory_path, default='description/no_description.txt')
-    categories = models.CharField(max_length=50,default='no')
+    categories = models.CharField(max_length=50,default='no') 
     def __str__(self):
         return self.name
 
@@ -35,10 +35,10 @@ class Order(models.Model):
 
 class MyUser(AbstractUser):
     tels = models.CharField(max_length=20)
-    #def __str__(self):
+    #def __str__(self):  
         #return "%s's profile" % self.user
 
-#def create_user_profile(sender, instance, created, **kwargs):
-    #if created:
-        #profile, created = UserProfile.objects.get_or_create(user=instance)
-#post_save.connect(create_user_profile, sender=User)
+#def create_user_profile(sender, instance, created, **kwargs):  
+    #if created:  
+        #profile, created = UserProfile.objects.get_or_create(user=instance)  
+#post_save.connect(create_user_profile, sender=User) 
