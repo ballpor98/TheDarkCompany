@@ -19,11 +19,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from shop import views
+from django.views.generic.base import RedirectView
+
 urlpatterns = [
     url(r'^shop/', include('shop.urls')),
     url(r'^login/$',auth_views.login,{'template_name': 'shop/login.html'},name='login'),
     url(r'^logout/$',auth_views.logout,{'next_page':'/shop'},name='logout'),
     url(r'^regis/$',views.RegisterView.as_view(), name='regis'),
+    url(r'^contact-us-page/$', views.ContactView.as_view(), name='contact-us-page'),
     url(r'^admin/', admin.site.urls),
+    #url(r'^.*$', RedirectView.as_view(url='/shop/', permanent=False))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
