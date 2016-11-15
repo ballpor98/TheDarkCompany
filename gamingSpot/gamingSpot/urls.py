@@ -21,9 +21,10 @@ from django.contrib.auth import views as auth_views
 from shop import views
 urlpatterns = [
     url(r'^shop/', include('shop.urls')),
-    url(r'^login/$',auth_views.login,{'template_name': 'shop/login.html'},name='login'),
-    url(r'^logout/$',auth_views.logout,{'next_page':'/shop'},name='logout'),
-    url(r'^regis/$',views.RegisterView.as_view(), name='regis'),
+    url(r'^login/$', auth_views.login, {'template_name': 'shop/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/shop'}, name='logout'),
+    url(r'^regis/$', views.RegisterView.as_view(), name='regis'),
+    url(r'^contact-us-page/$', views.ContactView.as_view(), name='contact-us-page'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

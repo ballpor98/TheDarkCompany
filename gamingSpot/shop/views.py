@@ -1,8 +1,6 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import FormView
+from django.views.generic import TemplateView
 
 from .models import *
 from .forms import *
@@ -19,6 +17,12 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Product
     template_name = 'shop/detail.html'
+
+
+class ContactView(TemplateView):
+    model = Product
+    template_name = "shop/contact-us-page.html"
+
 
 class RegisterView(FormView):
     template_name = 'shop/regis.html'
