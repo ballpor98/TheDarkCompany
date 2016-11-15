@@ -8,7 +8,7 @@ from django.db.models.signals import post_save
 
 def product_directory_path(instance, filename):
     #file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'description/product_{0}/{1}'.format(instance.product.id, filename)
+    return 'description/product_{0}/{1}'.format(instance.id, filename)
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
