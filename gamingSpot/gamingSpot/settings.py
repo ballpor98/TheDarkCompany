@@ -126,6 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 #STATIC_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/static"
-MEDIA_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/media"
+MEDIA_ROOT = 'gamingSpot/media'
 LOGIN_REDIRECT_URL = '/shop'
 AUTH_USER_MODEL = 'shop.MyUser'
