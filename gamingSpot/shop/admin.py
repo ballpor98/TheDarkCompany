@@ -14,7 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['brand','lates_update']
     #inlines = [ImageInline]
 
-
 admin.site.register(Product,ProductAdmin)
 '''admin.site.register(Member)'''
 admin.site.register(Order)
