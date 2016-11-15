@@ -18,4 +18,4 @@ admin.site.register(Product,ProductAdmin)
 '''admin.site.register(Member)'''
 admin.site.register(Order)
 admin.site.register(MyUser)
-admin.site.register(Description)
+#admin.site.register(Description)
