@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gamingSpot',
-        'USER': 'root',
-        'PASSWORD': 'password',
+        'USER': 'gamingSpotAdmin',
+        'PASSWORD': '1q2w3e4r',
         'HOST': 'localhost',
         'PORT': '3306',
     }
