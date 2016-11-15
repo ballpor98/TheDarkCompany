@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -78,7 +79,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a role="button">
+                        <a role="button" href="{% url 'contact-us-page' %}">
                             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Contact us
                         </a>
                     </li>
@@ -114,7 +115,31 @@
         {% block content %}
         {% endblock %}
         <!--</div>-->
-    </div>    
+    </div>
+    <footer>
+        <div class="row text-center">
+            <div class="col-sm-3 col-xs-6 first-box">
+                <h1><span class="glyphicon glyphicon-earphone"></span></h1>
+                <h3>Phone</h3>
+                <p>+6683-958-7333</p><br>
+            </div>
+            <div class="col-sm-3 col-xs-6 second-box">
+                <h1><span class="glyphicon glyphicon-home"></span></h1>
+                <h3>Location</h3>
+                <p>50 Ngamwongwan</p><br>
+            </div>
+            <div class="col-sm-3 col-xs-6 third-box">
+                <h1><span class="glyphicon glyphicon-send"></span></h1>
+                <h3>E-mail</h3>
+                <p>donazz@donut.com</p><br>
+            </div>
+            <div class="col-sm-3 col-xs-6 fourth-box">
+                <h1><span class="glyphicon glyphicon-leaf"></span></h1>
+                <h3>Web</h3>
+                <p>GamingSpot</p><br>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

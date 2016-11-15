@@ -8,7 +8,6 @@ from django.views.generic import TemplateView
 from .models import *
 from .forms import *
 
-
 class IndexView(generic.ListView):
     template_name = 'shop/index.html'
     context_object_name = 'all_product'
