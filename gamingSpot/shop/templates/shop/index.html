@@ -1,10 +1,11 @@
 {% extends 'shop/base.html' %}
 {% load staticfiles %}
+{% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}"/>
-    <script src="{% static 'shop/js/bootstrap-carousel.js' %}"></script>
-</head>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}"/>
+<script src="{% static 'shop/js/bootstrap-carousel.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <div id="mycarousel" class="carousel slide" data-ride="carousel">
