@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gamingSpot',
         'USER': 'root',
-        'PASSWORD': '1q2w3e4r',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -126,6 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 #STATIC_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/static"
-MEDIA_ROOT = "/home/inorisan/TheDarkCompany/gamingSpot/gamingSpot/media"
+MEDIA_ROOT = "/Users/idealphase/Documents/MyCode/Software_Engineer/TheDarkCompany/gamingSpot/gamingSpot/media"
 LOGIN_REDIRECT_URL = '/shop'
-AUTH_PROFILE_MODULE = 'shop.UserProfile'
+AUTH_USER_MODEL = 'shop.MyUser'
