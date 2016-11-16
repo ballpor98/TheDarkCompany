@@ -10,6 +10,10 @@ def product_directory_path(instance, filename):
     #file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'description/product_{0}/{1}'.format(instance.id, filename)
 
+def display_description_file(self):
+    with open(self.text.path) as fp:
+        return fp.read().replace('\n', '<br>')
+
 class Product(models.Model):
     name = models.CharField(max_length=50)
     brand = models.CharField(max_length=50)
