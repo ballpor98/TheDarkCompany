@@ -44,7 +44,8 @@ class RegisterView(View):
                         username=forms['display_name'],
                         first_name=forms['first_name'],
                         last_name=forms['last_name'],
-                        email=forms['email'])
+                        email=forms['email'],
+                        tels=forms['tel'])
             newuser.set_password(forms['password'])
             newuser.save()
             return redirect('/login')
