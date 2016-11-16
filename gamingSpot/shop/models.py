@@ -20,6 +20,8 @@ class Product(models.Model):
     categories = models.CharField(max_length=50,default='no') 
     def __str__(self):
         return self.name
+    def display_description_file(self):
+        return self.description_file.read()
 
 class Order(models.Model):
     ORDER_STATUS=(
