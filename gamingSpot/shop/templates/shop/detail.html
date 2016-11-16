@@ -1,31 +1,37 @@
 {% extends 'shop/base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/detail.css' %}"/>     
+{% endblock %}
+
 {%block content %}
-<br><br><br>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {% if product.image %}
-                        <img src="{{ product.image.url }}" class="img-responsive">
-                    {% endif %}
-                    </a>
-                    <h2> Name : {{ product.name }}</h2>
-                    <h4> Brand : {{ product.brand }}</h4>
-                    <h4> Price : {{ product.price }} BAHT</h4>
-                    <h4> Categories : {{ product.categories }}</h4>
-                    <a class="btn btn-primary btn-sm" role="button">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; ADD TO CART
-                    </a>
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">              
+                       <img src="{{ product.image.url }}">                        
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{ product.name }}</h3>
+
+                        <p class="product-description"> {{ product.display_description_file | linebreaks }} </p>
+                        <h4 class="price">current price: <span> {{ product.price }}</span></h4>                    
+                        
+                        <h5 class="colors">colors:
+                            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                            <span class="color green"></span>
+                            <span class="color blue"></span>
+                        </h5>
+
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>                           
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    <div class="col-sm-7">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                    <h3> {{ product.display_description_file | linebreaks }} </h3>
-            </div>
-        </div>
     </div>
-</div>
 {% endblock %}
