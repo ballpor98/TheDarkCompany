@@ -1,3 +1,11 @@
+body{
+	margin-top: 150px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background: white url('images/background.jpg');
+    margin-bottom: 150px;
+}
+
 /* Credit to bootsnipp.com for the css for the color graph */
 .colorgraph {
   height: 5px;
