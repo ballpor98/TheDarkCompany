@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^regis/$', views.RegisterView.as_view(), name='regis'),
     url(r'^contact-us-page/$', views.ContactView.as_view(), name='contact-us-page'),
     url(r'^admin/', admin.site.urls),
-    #url(r'^.*$', RedirectView.as_view(url='/shop/', permanent=False))
+    url(r'^$', RedirectView.as_view(url='/shop/', permanent=False))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
