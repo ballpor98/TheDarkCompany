@@ -1,4 +1,11 @@
 {% extends 'shop/base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block css %}
+<script src="{% static 'shop/js/register-page.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'shop/login-page.css' %}"/>
+{% endblock %}
 
 {% block content %}
 <div class="container">
