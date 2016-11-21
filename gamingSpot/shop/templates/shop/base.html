@@ -105,7 +105,7 @@
                     </li>
                     {% else %}
                     <li>
-                        <a class="navbar-brand">{{ user.username }}</a>
+                        <a role="button" href="{% url 'member' %}" class="navbar-brand">{{ user.username }}</a>
                     </li>
                     <li>
                         <a role="button" href="{% url 'logout' %}">
