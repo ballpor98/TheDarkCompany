@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/index.css' %}"/> 
 <script src="{% static 'shop/js/bootstrap-carousel.js' %}"></script>
 {% endblock %}
 
@@ -19,21 +20,19 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="http://cdn.wallpapersafari.com/59/90/8Mxkjz.jpg" alt="First Image">
+            <img class="carousel-image" src="http://cdn.wallpapersafari.com/59/90/8Mxkjz.jpg">
         </div>
         <div class="item">
-            <img src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg"
-                 alt="Second Image">
+            <img class="carousel-image" src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg">
         </div>
         <div class="item">
-            <img src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg"
-                 alt="Third Image">
+            <img class="carousel-image" src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg">
         </div>
         <div class="item">
-            <img src="http://cdn.wallpapersafari.com/33/64/w0rDv2.jpg" data-color="lightgreen" alt="Fourth Image">
+            <img class="carousel-image" src="http://cdn.wallpapersafari.com/33/64/w0rDv2.jpg">
         </div>
         <div class="item">
-            <img src="http://wallpapercave.com/wp/6I1chqs.jpg" data-color="tomato" alt="Fifth Image">
+            <img class="carousel-image" src="http://wallpapercave.com/wp/6I1chqs.jpg">
         </div>
     </div>
 
@@ -49,6 +48,7 @@
 </div>
 
     <h1 align="center" style="color:black;"" > TRENDING PRODUCT </h1>
+
 
 <div class="container">
     <div class="row">

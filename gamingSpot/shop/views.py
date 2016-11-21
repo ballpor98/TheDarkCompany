@@ -1,9 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render,redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic,View
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
+from django.db import connection, IntegrityError
+from django.contrib import messages
 
 from .models import *
 from .forms import *
@@ -35,18 +37,22 @@ class RegisterView(View):
     #def form_valid(self, form):
     def get(self, request):
         return render(request, self.template_name, {})
+        #return redirect('/login')
 
     def post(self, request):
         forms = {}
         for key in request.POST.keys():
             forms[key] = request.POST.get(key, '')
-        newuser = MyUser(is_superuser=0,
-                    username=forms['display_name'],
-                    first_name=forms['first_name'],
-                    last_name=forms['last_name'],
-                    email=forms['email'])
-        newuser.set_password(forms['password'])
-        newuser.save()
-        #return redirect('/shop')
-
-        return render(request, self.template_name, forms)
+        try:
+            newuser = MyUser(is_superuser=0,
+                        username=forms['display_name'],
+                        first_name=forms['first_name'],
+                        last_name=forms['last_name'],
+                        email=forms['email'],
+                        tels=forms['tel'])
+            newuser.set_password(forms['password'])
+            newuser.save()
+            return redirect('/login')
+        except IntegrityError as e:
+            messages.error(request, 'Useranme already exists', extra_tags='alert-danger')
+            return render(request, self.template_name, forms)
