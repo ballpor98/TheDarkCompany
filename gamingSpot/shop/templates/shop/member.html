@@ -1,0 +1,84 @@
+{% extends 'shop/base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/member.css' %}"/>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 ">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>User Profile</h4></div>
+                <div class="panel-body">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            <div class="col-sm-6">
+                                <div align="center"><img alt="User Pic"
+                                                         src="https://openclipart.org/download/247320/abstract-user-flat-4.svg"
+                                                         id="profile-image1" class="img-circle img-responsive">
+
+                                    <!--Upload Image Js And Css-->
+                                </div>
+
+                                <br>
+
+                                <!-- /input-group -->
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 style="color:#00b1b1;">User Full Name </h4></span>
+                                <span><p>Member</p></span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr style="margin:5px 0 5px 0;">
+
+
+                            <div class="col-sm-5 col-xs-6 tital ">First Name:</div>
+                            <div class="col-sm-7 col-xs-6 ">Name</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                            <div class="col-sm-5 col-xs-6 tital ">Last Name:</div>
+                            <div class="col-sm-7">Last Name</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                            <div class="col-sm-5 col-xs-6 tital ">Username</div>
+                            <div class="col-sm-7">Username</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                            <div class="col-sm-5 col-xs-6 tital ">Email</div>
+                            <div class="col-sm-7">Email</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                            <div class="col-sm-5 col-xs-6 tital ">Phone Number</div>
+                            <div class="col-sm-7">Number</div>
+                            <div class="clearfix"></div>
+                            <div class="bot-border"></div>
+
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <script>
+              $(function() {
+    $('#profile-image1').on('click', function() {
+        $('#profile-image-upload').click();
+    });
+});
+
+        </script>
+
+
+    </div>
+</div>
+{% endblock %}
