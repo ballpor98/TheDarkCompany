@@ -24,6 +24,10 @@ class ContactView(TemplateView):
     model = Product
     template_name = "shop/contact-us-page.html"
 
+class MemberView(TemplateView):
+    model = Product
+    template_name = "shop/member.html"
+
 class RegisterView(View):
     template_name = 'shop/regis.html'
     # success_url = '/shop/'
