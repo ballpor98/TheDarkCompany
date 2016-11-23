@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #'shop.apps.ShopConfig',
     'shop',
+    'carton',
+    'shopping',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +131,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'gamingSpot/media'
 LOGIN_REDIRECT_URL = '/shop'
 AUTH_USER_MODEL = 'shop.MyUser'
+CART_PRODUCT_MODEL='shop.models.Product'
