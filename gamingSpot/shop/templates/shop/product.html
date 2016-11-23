@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/product.css' %}"/>
+{% endblock %}
+
+
+{% block content %} 
+<div class="row">
+  {% for product in product_brand %}
+  <div class="col-md-4">
+    <div class="product-item">
+      <div class="pi-img-wrapper">
+      <img src="{{ product.image }}" class="img-responsive" alt="{{ product.name }}">
+        <div>
+          <a href="#" class="btn">View Detial</a>          
+        </div>
+      </div>
+      <h3><a href="shop-item.html"> {{ product.name }}</a></h3>
+      <div class="pi-price">{{ product.price }}</div>
+      <a href="javascript:;" class="btn add2cart">Add to cart</a>
+      <div class="sticker sticker-new"></div>
+    </div>
+  </div>
+  <!-- if last column in row -->
+  {% if forloop.counter|divisibleby:3 and not forloop.last %}
+</div><br><div class="row">
+{% endif %}
+{% endfor %}
+</div><br>
+{% endblock %}
