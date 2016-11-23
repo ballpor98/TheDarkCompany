@@ -23,6 +23,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^shop/', include('shop.urls')),
+    url(r'^shopping-cart/', include('shopping.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'shop/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/shop'}, name='logout'),
     url(r'^regis/$', views.RegisterView.as_view(), name='regis'),
