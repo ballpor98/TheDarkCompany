@@ -41,6 +41,7 @@ class Order(models.Model):
     total = models.DecimalField(max_digits=7,decimal_places=2)
     address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=5)
+    product_list = models.FileField(upload_to='Order',blank=False,default='Order/no_order.xml')
 
 class MyUser(AbstractUser):
     tels = models.CharField(max_length=20)
