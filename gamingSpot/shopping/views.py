@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from carton.cart import Cart
-from shop.models import Product
+from shop.models import *
 
 
 def add(request):
