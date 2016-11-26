@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User ,AbstractUser
 from django.db.models.signals import post_save
 
+
 # Create your models here.
 
 def product_directory_path(instance, filename):

@@ -6,9 +6,12 @@ from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
 from django.db import connection, IntegrityError
 from django.contrib import messages
+from django.core import serializers
 
+import json
 from .models import *
 from .forms import *
+from carton.cart import Cart
 
 class IndexView(generic.ListView):
     template_name = 'shop/index.html'
@@ -36,6 +39,14 @@ class ContactView(TemplateView):
 class MemberView(TemplateView):
     model = Product
     template_name = "shop/member.html"
+
+class OrderView(View):
+    template_name = "shop/order.html"
+    def get(self, request):
+        cart = Cart(request.session)
+        o = Order(status='P',product_list=json.dumps(cart.cart_serializable()))
+        cart.clear()
+        return HttpResponse("OrderReceived")
 
 class RegisterView(View):
     template_name = 'shop/regis.html'
