@@ -51,6 +51,10 @@ border: none;
     box-shadow:none;
 }
 
+.after-navbar{
+  margin-bottom: 2cm;
+}
+
 .before-footer{
     margin-top: 4cm;
 }

@@ -8,6 +8,11 @@ body {
     background: #f1f1f1;
 }
 
+.containerproduct{
+	margin-left: 2cm;
+	margin-right: 2cm;
+}
+
 .product-item {
     padding: 15px;
     background: #fff;
@@ -58,7 +63,7 @@ body {
     padding: 3px 10px;
     color: #fff;
     border: 1px #fff solid;
-    margin: -13px 5px 0;
+    margin: 13px 5px 0;
     background: transparent;
     text-transform: uppercase;
     position: relative;

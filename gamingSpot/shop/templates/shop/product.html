@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'shop/base.html' %}
 {% load staticfiles %}
 
 {% block css %}
@@ -6,20 +6,23 @@
 {% endblock %}
 
 
-{% block content %} 
+{% block content %}
+<div class="containerproduct">
 <div class="row">
-  {% for product in product_brand %}
-  <div class="col-md-4">
+  <div class="after-navbar">
+  </div>
+  {% for product in all_product %}
+  <div class="col-md-3">
     <div class="product-item">
       <div class="pi-img-wrapper">
-      <img src="{{ product.image }}" class="img-responsive" alt="{{ product.name }}">
+      <img src="{{ product.image.url }}" class="img-responsive" alt="{{ product.name }}">
         <div>
-          <a href="#" class="btn">View Detial</a>          
+          <a href="{% url 'shop:detail' product.id %}" class="btn">View Detail</a>          
         </div>
       </div>
-      <h3><a href="shop-item.html"> {{ product.name }}</a></h3>
-      <div class="pi-price">{{ product.price }}</div>
-      <a href="javascript:;" class="btn add2cart">Add to cart</a>
+      <h3><a href="{% url 'shop:detail' product.id %}"> {{ product.name }}</a></h3>
+      <div class="pi-price">{{ product.price }}฿</div>
+      <a href="#" class="btn add2cart">Add to cart</a>
       <div class="sticker sticker-new"></div>
     </div>
   </div>
@@ -29,4 +32,7 @@
 {% endif %}
 {% endfor %}
 </div><br>
+</div>
+<div class="before-footer">
+</div>
 {% endblock %}
