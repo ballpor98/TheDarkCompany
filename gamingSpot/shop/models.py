@@ -20,7 +20,7 @@ class Product(models.Model):
         ('J' ,'Joystick'),
     )    
     categories = models.CharField(max_length=50,choices=CATEGORIES_OPTION, default='Mouse')
-    RANDS_OPTION=(
+    BRANDS_OPTION=(
         ('S','Steelseries'),
         ('R','Razor'),
         ('L','Logitech'),
