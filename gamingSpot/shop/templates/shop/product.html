@@ -12,7 +12,7 @@
   <div class="after-navbar">
   </div>
   {% for product in all_product %}
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="product-item">
       <div class="pi-img-wrapper">
       <img src="{{ product.image.url }}" class="img-responsive" alt="{{ product.name }}">
@@ -22,7 +22,7 @@
       </div>
       <h3><a href="{% url 'shop:detail' product.id %}"> {{ product.name }}</a></h3>
       <div class="pi-price">{{ product.price }}฿</div>
-      <a href="#" class="btn add2cart">Add to cart</a>
+      <a href="{% url 'shopping:shopping-cart-add' %}?id={{ product.id }}" class="btn add2cart">Add to cart</a>
       <div class="sticker sticker-new"></div>
     </div>
   </div>

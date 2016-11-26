@@ -91,11 +91,9 @@
                                     </div>
                                     <div class="separator clear-left">
                                         <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com"
-                                                                                  class="hidden-sm">Add to cart</a></p>
+                                            <i class="fa fa-shopping-cart"></i><a href="{% url 'shopping:shopping-cart-add' %}?id={{ product.id }}" class="hidden-sm">Add to cart</a></p>
                                         <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com"
-                                                                         class="hidden-sm">More details</a></p>
+                                            <i class="fa fa-list"></i><a href="{% url 'shop:detail' product.id %}" class="hidden-sm">More details</a></p>
                                     </div>
                                     <div class="clearfix">
                                     </div>
@@ -126,10 +124,10 @@
                                     </div>
                                     <div class="separator clear-left">
                                         <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com"
+                                            <i class="fa fa-shopping-cart"></i><a href="{% url 'shopping:shopping-cart-add' %}?id={{ product.id }}"
                                                                                   class="hidden-sm">Add to cart</a></p>
                                         <p class="btn-details">
-                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com"
+                                            <i class="fa fa-list"></i><a href="{% url 'shop:detail' product.id %}"
                                                                          class="hidden-sm">More details</a></p>
                                     </div>
                                     <div class="clearfix">
@@ -144,6 +142,13 @@
             </div>
         </div>
     </div>
+</div>
+<div class="before-shopnow">
+</div>
+<div class="container">
+	<div class="row"><br><center>
+		<a href="{% url 'shop:show_product' %}" class='ng-button'>SHOP NOW!</a></center>
+	</div>
 </div>
 <div class="before-footer">
 </div>

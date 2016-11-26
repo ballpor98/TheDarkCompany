@@ -1,6 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render,redirect
 
 from carton.cart import Cart
 from shop.models import Product
@@ -10,7 +9,7 @@ def add(request):
     cart = Cart(request.session)
     product = Product.objects.get(id=request.GET.get('id'))
     cart.add(product, price=product.price)
-    return HttpResponse("Added")
+    return redirect('/shopping-cart/show')
 
 
 def remove(request):
@@ -24,5 +23,3 @@ def show(request):
     #cart = Cart(request.session)
     return render(request, 'shopping/show-cart.html')
 
-class CheckoutView(TemplateView):
-    template_name = "shopping/checkout.html"
