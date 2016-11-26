@@ -12,11 +12,6 @@ def product_directory_path(instance, filename):
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
-    brand = models.CharField(max_length=50)
-    price = models.IntegerField()
-    lates_update = models.DateTimeField()
-    image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
-    description_file = models.FileField(upload_to=product_directory_path, default='description/no_description.txt')
     CATEGORIES_OPTION=(
         ('M','Mouse'),
         ('MP','Mousepad'),
@@ -25,6 +20,17 @@ class Product(models.Model):
         ('J' ,'Joystick'),
     )    
     categories = models.CharField(max_length=50,choices=CATEGORIES_OPTION, default='Mouse')
+    RANDS_OPTION=(
+        ('S','Steelseries'),
+        ('R','Razor'),
+        ('L','Logitech'),
+        ('C','Cousair'),                
+    )    
+    brand = models.CharField(max_length=50,choices=BRANDS_OPTION, default='Steelseries')
+    price = models.IntegerField()
+    lates_update = models.DateTimeField()
+    image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
+    description_file = models.FileField(upload_to=product_directory_path, default='description/no_description.txt')    
     def __str__(self):
         return self.name
     def display_description_file(self):
