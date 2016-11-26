@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render,redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.views import generic,View
 from django.views.generic.edit import FormView
@@ -44,7 +44,9 @@ class OrderView(View):
     template_name = "shop/order.html"
     def get(self, request):
         cart = Cart(request.session)
-        o = Order(status='P',product_list=json.dumps(cart.cart_serializable()))
+        o = Order(status='P',)
+        o.save()
+        #product_list=json.dumps(cart.cart_serializable())
         cart.clear()
         return HttpResponse("OrderReceived")
 
