@@ -21,6 +21,7 @@ from django.contrib.auth import views as auth_views
 from shop import views
 from django.views.generic.base import RedirectView
 
+
 urlpatterns = [
     url(r'^shop/', include('shop.urls')),
     url(r'^shopping-cart/', include('shopping.urls')),
