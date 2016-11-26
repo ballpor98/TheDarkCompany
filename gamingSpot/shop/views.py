@@ -44,7 +44,7 @@ class OrderView(View):
     template_name = "shop/order.html"
     def get(self, request):
         cart = Cart(request.session)
-        o = Order(status='P')
+        o = Order(status='P',)
         o.save()
         #product_list=json.dumps(cart.cart_serializable())
         cart.clear()
