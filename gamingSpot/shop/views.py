@@ -17,6 +17,13 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Product.objects.all()
 
+class ProductView(generic.ListView):
+    template_name = 'shop/product.html'
+    context_object_name = 'all_product'
+
+    def get_queryset(self):
+        return Product.objects.all()
+
 
 class DetailView(generic.DetailView):
     model = Product
