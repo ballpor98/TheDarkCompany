@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'shop/index.css' %}"/> 
+<link rel="stylesheet" type="text/css" href="{% static 'shop/index.css' %}"/>
 <script src="{% static 'shop/js/bootstrap-carousel.js' %}"></script>
 {% endblock %}
 
@@ -23,10 +23,12 @@
             <img class="carousel-image" src="http://cdn.wallpapersafari.com/59/90/8Mxkjz.jpg">
         </div>
         <div class="item">
-            <img class="carousel-image" src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg">
+            <img class="carousel-image"
+                 src="http://on-winning.com/wp-content/uploads/2015/09/Flawless-Gaming-Mice-Wallpaper.jpg">
         </div>
         <div class="item">
-            <img class="carousel-image" src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg">
+            <img class="carousel-image"
+                 src="http://www.wallpapersshock.com/uploads/large/hd-computer/free-3d-pc-cool-gaming-hd-wallpapers-download.jpg">
         </div>
         <div class="item">
             <img class="carousel-image" src="http://cdn.wallpapersafari.com/33/64/w0rDv2.jpg">
@@ -47,94 +49,102 @@
     </a>
 </div>
 
-    <h1 align="center" style="color:black;"" > TRENDING PRODUCT </h1>
-
-
+<h1 align="center" style="color:black;"> I'LL SUPPORT YOU, SO YOU CAN CARRY ME</h1>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/650x450&text=Product1" class="img-responsive">
-                    <div class="caption">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <h3> Product 1 </h3>
-                            </div>
-                            <div class="col-md-6 col-xs-6 price">
-                                <h3>
-                                    <label>$649.99</label></h3>
-                            </div>
-                        </div>
-                        <p>Description 1</p>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="#" class="btn btn-success btn-product"><span
-                                        class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
-                            </div>
-                        </div>
-
-                        <p></p>
-                    </div>
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Product Recommendations</h3>
+            </div>
+            <div class="col-md-3">
+                <!-- Controls -->
+                <div class="controls pull-right hidden-xs">
+                    <a class="left fa fa-chevron-left btn btn-primary" href="#carousel-example-generic"
+                       data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-primary"
+                                                href="#carousel-example-generic"
+                                                data-slide="next"></a>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/650x450&text=Product2" class="img-responsive">
-                    <div class="caption">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <h3> Product 2 </h3>
-                            </div>
-                            <div class="col-md-6 col-xs-6 price">
-                                <h3>
-                                    <label>$749.99</label></h3>
-                            </div>
-                        </div>
-                        <p>Description 2</p>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="#" class="btn btn-success btn-product"><span
-                                        class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
-                            </div>
-                        </div>
-
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/650x450&text=Product3" class="img-responsive">
-                    <div class="caption">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <h3> Product 3</h3>
-                            </div>
-                            <div class="col-md-6 col-xs-6 price">
-                                <h3>
-                                    <label>$749.00</label></h3>
-                            </div>
-                        </div>
-                        <p>Description 3</p>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="#" class="btn btn-success btn-product"><span
-                                        class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
-                            </div>
-                        </div>
-
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
+        <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                        {% for product in all_product %}
+                        {% if forloop.counter <= 3 %}
+                        <div class="col-sm-4">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="img-responsive" alt="a"/>
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-10">
+                                            <h5>
+                                                {{ product.name }}</h5>
+                                            <h5 class="price-text-color">
+                                                <span>&#3647;</span>{{ product.price }}
+                                                </h5>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com"
+                                                                                  class="hidden-sm">Add to cart</a></p>
+                                        <p class="btn-details">
+                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com"
+                                                                         class="hidden-sm">More details</a></p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        {% for product in all_product %}
+                        {% if forloop.counter > 3 %}
+                        <div class="col-sm-4">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="img-responsive" alt="a"/>
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-10">
+                                            <h5>
+                                                {{ product.name }}</h5>
+                                            <h5 class="price-text-color">
+                                                <span>&#3647;</span>{{ product.price }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <p class="btn-add">
+                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com"
+                                                                                  class="hidden-sm">Add to cart</a></p>
+                                        <p class="btn-details">
+                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com"
+                                                                         class="hidden-sm">More details</a></p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="before-footer">
-
 </div>
-
 {% endblock %}
