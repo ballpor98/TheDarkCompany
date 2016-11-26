@@ -22,7 +22,7 @@ def remove(request):
 
 def show(request):
     #cart = Cart(request.session)
-    return render(request, 'shopping/show-cart.html')
+    return render(request, 'shopping/shopping-cart.html')
 
 class CheckoutView(TemplateView):
     template_name = "shopping/checkout.html"
