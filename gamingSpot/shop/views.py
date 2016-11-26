@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from django.db import connection, IntegrityError
 from django.contrib import messages
 from django.core import serializers
+from django.core.files.base import ContentFile
 
 import json
 from .models import *
@@ -44,11 +45,15 @@ class OrderView(View):
     template_name = "shop/order.html"
     def get(self, request):
         cart = Cart(request.session)
-        o = Order(status='P',)
+        o = Order(status='P',total=cart.total)
+        #data = cart.items_serializable
+        temp = ContentFile(json.dumps(cart.cart_serializable))
+        file_name = str(o.id) + ".json"
+        o.product_list.save(file_name,temp)
         o.save()
         #product_list=json.dumps(cart.cart_serializable())
         cart.clear()
-        return HttpResponse("OrderReceived")
+        return HttpResponse(o.id)
 
 class RegisterView(View):
     template_name = 'shop/regis.html'
