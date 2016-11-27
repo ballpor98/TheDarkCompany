@@ -10,6 +10,7 @@ from django.core import serializers
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 
 import json
 from .models import *
@@ -29,12 +30,16 @@ class ProductView(generic.ListView):
     def get_queryset(self):
         p_brand = self.request.GET.get('brand')
         p_categories = self.request.GET.get('categories')
-        if p_brand is None and p_categories is None:
+        p_search = self.request.GET.get('search')
+        if p_brand is None and p_categories is None and p_search is None:
             return Product.objects.all()
         elif p_brand != None:
             return Product.objects.filter(brand=p_brand)
         elif p_categories != None:
             return Product.objects.filter(categories=p_categories)
+        elif p_search != None:
+            searchProduct = Product.objects.filter(Q(name__contains=p_search) | Q(brand__contains=p_search) | Q(categories__contains=p_search))
+            return searchProduct
         else:
             return Product.objects.all()
 
