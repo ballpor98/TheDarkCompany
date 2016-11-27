@@ -45,7 +45,7 @@ class Order(models.Model):
         ('W','SomeThingWrong'),
         )
     status = models.CharField(max_length=1,choices=ORDER_STATUS)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     total = models.DecimalField(max_digits=7,decimal_places=2,default=0.0)
     address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=5)
