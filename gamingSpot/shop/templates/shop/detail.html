@@ -15,7 +15,7 @@
                     <div class="details col-md-6">
                         <h3 class="product-title">{{ product.name }}</h3>
 
-                        <p class="product-description"> {{ product.description }} </p>
+                        <p class="product-description"> {{ product.description|linebreaks }} </p>
                         <h4 class="price">current price: <span>&#3647;</span>{{ product.price }}</h5></h4>
 
                         <div class="action">
