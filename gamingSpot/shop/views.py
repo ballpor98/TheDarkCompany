@@ -8,6 +8,8 @@ from django.db import connection, IntegrityError
 from django.contrib import messages
 from django.core import serializers
 from django.core.files.base import ContentFile
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 import json
 from .models import *
@@ -44,9 +46,13 @@ class ContactView(TemplateView):
     model = Product
     template_name = "shop/contact-us-page.html"
 
-class MemberView(TemplateView):
-    model = Product
+class MemberView(View):
     template_name = "shop/member.html"
+
+    @method_decorator(login_required)
+    def get(self, request):
+        user = MyUser.objects.get(id=request.user.id)
+        return render(request,self.template_name,{'user':user})
 
 class OrderView(View):
     template_name = "shop/order.html"

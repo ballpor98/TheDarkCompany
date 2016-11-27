@@ -27,7 +27,7 @@
                                 <!-- /input-group -->
                             </div>
                             <div class="col-sm-6">
-                                <h4 style="color:#00b1b1;">User Full Name </h4></span>
+                                <h4 style="color:#00b1b1;">{{ user.first_name }} {{ user.last_name }}</h4></span>
                                 <span><p>Member</p></span>
                             </div>
                             <div class="clearfix"></div>
@@ -35,27 +35,27 @@
 
 
                             <div class="col-sm-5 col-xs-6 tital ">First Name:</div>
-                            <div class="col-sm-7 col-xs-6 ">Name</div>
+                            <div class="col-sm-7 col-xs-6 ">{{ user.first_name }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Last Name:</div>
-                            <div class="col-sm-7">Last Name</div>
+                            <div class="col-sm-7">{{ user.last_name }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Username</div>
-                            <div class="col-sm-7">Username</div>
+                            <div class="col-sm-7">{{ user.username }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Email</div>
-                            <div class="col-sm-7">Email</div>
+                            <div class="col-sm-7">{{ user.email }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Phone Number</div>
-                            <div class="col-sm-7">Number</div>
+                            <div class="col-sm-7">{{ user.tels }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
