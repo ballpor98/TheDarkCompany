@@ -34,8 +34,14 @@ class CheckoutView(View):
         return render(request,self.template_name,{})
 
     def post(self, request):
+        forms = {}
+        for key in request.POST.keys():
+            forms[key] = request.POST.get(key, '')
         cart = Cart(request.session)
-        o = Order(status='P',total=cart.total)
+        o = Order(status='P',
+            total=cart.total,
+            address=forms['address_line_1'],
+            postcode=forms['postalcode'])
         temp = ContentFile(json.dumps(cart.cart_serializable))
         file_name = str(o.id) + ".json"
         o.product_list.save(file_name,temp)
