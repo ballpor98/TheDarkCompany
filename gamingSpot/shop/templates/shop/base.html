@@ -55,26 +55,21 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Brands<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Steelseries</a></li>
-                            <li><a href="#">Logitech</a></li>
-                            <li><a href="#">Razor</a></li>
-                            <li><a href="#">Cousair</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?brand=S">Steelseries</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?brand=L">Logitech</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?brand=R">Razor</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?brand=C">Cousair</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Categories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Mouse</a></li>
-                            <li><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Mousepad</a></li>
-                            <li><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Keyboard</a></li>
-                            <li><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Headset</a></li>
-                            <li><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Joystick</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?categories=M" class="dropdown-toggle " data-toggle="dropdo                                   wn" role="button" aria-haspopup="true" aria-expanded="false">Mouse</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?categories=MP" class="dropdown-toggle " data-toggle="dropd                                   own" role="button" aria-haspopup="true" aria-expanded="false">Mousepad</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?categories=K" class="dropdown-toggle " data-toggle="dropdo                                   wn" role="button" aria-haspopup="true" aria-expanded="false">Keyboard</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?categories=H" class="dropdown-toggle " data-toggle="dropdo                                   wn" role="button" aria-haspopup="true" aria-expanded="false">Headset</a></li>
+                            <li><a href="{% url 'shop:show_product'%}?categories=J" class="dropdown-toggle " data-toggle="dropdo                                   wn" role="button" aria-haspopup="true" aria-expanded="false">Joystick</a></li>
                         </ul>
                     </li>
 

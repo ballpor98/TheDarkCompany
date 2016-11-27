@@ -24,10 +24,17 @@ class IndexView(generic.ListView):
 class ProductView(generic.ListView):
     template_name = 'shop/product.html'
     context_object_name = 'all_product'
-
     def get_queryset(self):
-        return Product.objects.all()
-
+        p_brand = self.request.GET.get('brand')
+        p_categories = self.request.GET.get('categories')
+        if p_brand is None and p_categories is None:
+            return Product.objects.all()
+        elif p_brand != None:
+            return Product.objects.filter(brand=p_brand)
+        elif p_categories != None:
+            return Product.objects.filter(categories=p_categories)
+        else:
+            return Product.objects.all()
 
 class DetailView(generic.DetailView):
     model = Product
