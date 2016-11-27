@@ -39,12 +39,23 @@ class Product(models.Model):
     def display_description_file(self):
         return self.description_file.read()
 
+class MyUser(AbstractUser):
+    tels = models.CharField(max_length=20)
+    #def __str__(self):
+        #return "%s's profile" % self.user
+
+#def create_user_profile(sender, instance, created, **kwargs):
+    #if created:
+        #profile, created = UserProfile.objects.get_or_create(user=instance)
+#post_save.connect(create_user_profile, sender=User)
+
 class Order(models.Model):
     ORDER_STATUS=(
         ('P','Pending'),
         ('A','Accepted'),
         ('W','SomeThingWrong'),
         )
+    member_id = models.ForeignKey(MyUser)
     status = models.CharField(max_length=1,choices=ORDER_STATUS)
     date = models.DateTimeField(default=timezone.now)
     total = models.DecimalField(max_digits=7,decimal_places=2,default=0.0)
@@ -67,12 +78,4 @@ class Order(models.Model):
     expire_year = models.CharField(max_length=50,choices=MONTH_OPTION, default='2016')
     card_cvc = models.IntegerField(default=00)
 
-class MyUser(AbstractUser):
-    tels = models.CharField(max_length=20)
-    #def __str__(self):
-        #return "%s's profile" % self.user
 
-#def create_user_profile(sender, instance, created, **kwargs):
-    #if created:
-        #profile, created = UserProfile.objects.get_or_create(user=instance)
-#post_save.connect(create_user_profile, sender=User)
