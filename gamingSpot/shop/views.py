@@ -8,6 +8,9 @@ from django.db import connection, IntegrityError
 from django.contrib import messages
 from django.core import serializers
 from django.core.files.base import ContentFile
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.db.models import Q
 
 import json
 from .models import *
@@ -24,10 +27,21 @@ class IndexView(generic.ListView):
 class ProductView(generic.ListView):
     template_name = 'shop/product.html'
     context_object_name = 'all_product'
-
     def get_queryset(self):
-        return Product.objects.all()
-
+        p_brand = self.request.GET.get('brand')
+        p_categories = self.request.GET.get('categories')
+        p_search = self.request.GET.get('search')
+        if p_brand is None and p_categories is None and p_search is None:
+            return Product.objects.all()
+        elif p_brand != None:
+            return Product.objects.filter(brand=p_brand)
+        elif p_categories != None:
+            return Product.objects.filter(categories=p_categories)
+        elif p_search != None:
+            searchProduct = Product.objects.filter(Q(name__contains=p_search) | Q(brand__contains=p_search) | Q(categories__contains=p_search))
+            return searchProduct
+        else:
+            return Product.objects.all()
 
 class DetailView(generic.DetailView):
     model = Product
@@ -37,9 +51,13 @@ class ContactView(TemplateView):
     model = Product
     template_name = "shop/contact-us-page.html"
 
-class MemberView(TemplateView):
-    model = Product
+class MemberView(View):
     template_name = "shop/member.html"
+
+    @method_decorator(login_required)
+    def get(self, request):
+        user = MyUser.objects.get(id=request.user.id)
+        return render(request,self.template_name,{'user':user})
 
 class OrderView(View):
     template_name = "shop/order.html"
