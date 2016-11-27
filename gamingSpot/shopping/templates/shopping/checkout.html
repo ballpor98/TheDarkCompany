@@ -2,13 +2,13 @@
 {% load staticfiles %}
 {% load static %}
 {% load carton_tags %}
-{% get_cart as cart %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'shop/checkout.css' %}"/>
 {% endblock %}
 
 {% block content %}
+{% get_cart as cart %}
 <div class="after-navbar"></div>
 <div class='container'>
   <div class='row' style='padding-top:25px; padding-bottom:25px;'>
