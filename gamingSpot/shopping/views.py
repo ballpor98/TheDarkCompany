@@ -3,6 +3,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 from django.views import generic,View
 from django.core.files.base import ContentFile
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 import json
 from carton.cart import Cart
@@ -39,16 +41,24 @@ class CheckoutView(View):
 
     def get(self,request):
         return render(request,self.template_name,{})
-
+    
+    @method_decorator(login_required)
     def post(self, request):
         forms = {}
+        user = MyUser.objects.get(id=request.user.id)
         for key in request.POST.keys():
             forms[key] = request.POST.get(key, '')
         cart = Cart(request.session)
         o = Order(status='P',
             total=cart.total,
             address=forms['address_line_1'],
-            postcode=forms['postalcode'])
+            postcode=forms['postalcode'],
+            name_oncard=forms['card-name'],
+            card_number=forms['card-number'],
+            expire_date=forms['exp-month'],
+            expire_year=forms['exp-year'],
+            card_cvc=forms['cvc'],
+            member_id=user)
         temp = ContentFile(json.dumps(cart.cart_serializable))
         file_name = str(o.id) + ".json"
         o.product_list.save(file_name,temp)
