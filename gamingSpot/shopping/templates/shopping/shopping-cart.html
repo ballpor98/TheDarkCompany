@@ -27,21 +27,27 @@
                     <tr>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{ MEDIA_URL }}{{ item.product.image.url }}" style="width: 72px; height: 72px;"> </a>
-                            <div class="media-body">
-                                <h4 class="media-heading"><a href="#">{{ item.product.name }}</a></h4>
-                                <h5 class="media-heading"> by <a href="#">{{ item.product.brand }}</a></h5>
+                            <a class="thumbnail pull-left" href="{% url 'shop:detail' item.product.id %}"> <img class="media-object" src="{{ MEDIA_URL }}{{ item.product.image.url }}" style="width: 72px; height: 72px;" > </a>
+                            <div class ="margin-img">
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a href="{% url 'shop:detail' item.product.id %}">{{ item.product.name }}</a></h4>
+                                    <button type="button" class="btn btn-default"> <a href="{% url 'shopping:shopping-cart-remove-single' %}?id={{ item.product.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span></a>
+                                    </button>
+                                    <button type="button" class="btn btn-default"> <a href="{% url 'shopping:shopping-cart-add' %}?id={{ item.product.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span></a>
+                                    </button>
                             </div>
-                        </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{ item.quantity }}">
+                            </div>
+                        </div>
                         </td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center"><strong>{{ item.quantity }}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span>&#3647;</span>{{ item.product.price }}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span>&#3647;</span>{{ item.subtotal }}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-default"><a href="{% url 'shopping:shopping-cart-remove' %}?id={{ item.product.id }}">
                             <span class="glyphicon glyphicon-remove"></span> Remove
-                        </button></td>
+                        </a></button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -58,13 +64,19 @@
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <button type="button" class="btn btn-default">
+                        <button type="button" class="btn btn-default"><a href="{% url 'shop:show_product' %}">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button></td>
+                        </a></button>
+                        </td>
                         <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                        {% if cart.is_empty == 0 %}
+                            <button type="button" class="btn btn-default"><a href="{% url 'shopping:checkout' %}">
+                                    Checkout <span class="glyphicon glyphicon-play"></span>
+                                </a>
+                            </button>
+                        {% endif %}
+                        </td>
+
                     </tr>
                 </tfoot>
             </table>
