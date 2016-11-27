@@ -22,7 +22,8 @@ class IndexView(generic.ListView):
     context_object_name = 'all_product'
 
     def get_queryset(self):
-        return Product.objects.all()
+        orderd_by_lates_update = Product.objects.all().order_by('lates_update').reverse()
+        return orderd_by_lates_update
 
 class ProductView(generic.ListView):
     template_name = 'shop/product.html'
