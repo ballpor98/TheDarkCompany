@@ -58,7 +58,8 @@ class MemberView(View):
     @method_decorator(login_required)
     def get(self, request):
         user = MyUser.objects.get(id=request.user.id)
-        return render(request,self.template_name,{'user':user})
+        order = Order.objects.filter(member_id=user)
+        return render(request,self.template_name,{'user':user,'order':order})
 
 class OrderView(View):
     template_name = "shop/order.html"
