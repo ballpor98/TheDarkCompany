@@ -32,7 +32,8 @@ class Product(models.Model):
     price = models.IntegerField()
     lates_update = models.DateTimeField()
     image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
-    description_file = models.FileField(upload_to=product_directory_path, default='description/no_description.txt')
+    quantity = models.IntegerField(default='0')
+    description = models.TextField(default='description')
     def __str__(self):
         return self.name
     def display_description_file(self):
