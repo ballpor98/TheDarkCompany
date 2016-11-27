@@ -3,13 +3,25 @@
 {% load static %}
 
 {% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{% static 'shop/js/register-page.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'shop/register-page.css' %}"/>     
+<link rel="stylesheet" type="text/css" href="{% static 'shop/register-page.css' %}"/>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-
+  {% if messages %}
+  <div class="row" style="position: fixed; top:5%; left:25%; width:50%; z-index:1999; text-align:center;">
+      {% for message in messages %}
+      <div class="alert {{ message.extra_tags }} alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>{{ message }}</strong> 
+      </div>
+      {% endfor %}
+  </div>
+  {% endif %}
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <form role="form" method="post">{% csrf_token %}
