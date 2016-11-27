@@ -32,7 +32,7 @@ class Product(models.Model):
     price = models.IntegerField()
     lates_update = models.DateTimeField()
     image = models.ImageField(upload_to = 'images/product/', default='images/product/no_img.jpg')
-    quantity = models.IntegerField(default='0')
+    #quantity = models.IntegerField(default= 0)
     description = models.TextField(default='description')
     def __str__(self):
         return self.name
@@ -52,7 +52,7 @@ class Order(models.Model):
     postcode = models.CharField(max_length=5)
     product_list = models.FileField(upload_to='Order',blank=True,default='Order/no_order.xml')
     name_oncard = models.CharField(max_length=50,default='name')
-    card_number = models.IntegerField(default='0000')
+    card_number = models.IntegerField(default=0000)
     MONTH_OPTION=(
         ('01','Jan'),('02','Feb'),('03','Mar'),
         ('04','Apr'),('05','May'),('06','June'),
@@ -65,7 +65,7 @@ class Order(models.Model):
         ('2020','2020'),('2021','2021'),('2022','2022'),('2023','2023'),('2024','2024'),
     )
     expire_year = models.CharField(max_length=50,choices=MONTH_OPTION, default='2016')
-    card_cvc = models.IntegerField(default='00')
+    card_cvc = models.IntegerField(default=00)
 
 class MyUser(AbstractUser):
     tels = models.CharField(max_length=20)
