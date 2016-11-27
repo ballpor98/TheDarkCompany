@@ -108,6 +108,7 @@
                     <div class="row">
                         {% for product in all_product %}
                         {% if forloop.counter > 3 %}
+                        {% if forloop.counter <= 6 %}
                         <div class="col-sm-4">
                             <div class="col-item">
                                 <div class="photo">
@@ -135,6 +136,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% endif %}
                         {% endfor %}
                     </div>

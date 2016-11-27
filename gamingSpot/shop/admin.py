@@ -10,26 +10,16 @@ from .models import *
     extra = 1'''
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name','categories','brand','price','lates_update')
-    list_filter = ['categories','brand','lates_update']
-    search_fields = ['name', 'brand', 'category',]
-    list_per_page = 50
+    list_display = ('name','brand','price','lates_update')
+    list_filter = ['brand','lates_update']
     #inlines = [ImageInline]
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('member_id','status','date','total','product_list')
+    list_filter = ['member_id','status','date','total']
 
 admin.site.register(Product,ProductAdmin)
 '''admin.site.register(Member)'''
-
-class UserAdmin(admin.ModelAdmin):    
-    list_display = ('username', 'first_name', 'last_name', 'email', 'tels')
-    list_per_page = 50    
-    search_fields = ['username', 'first_name', 'last_name', 'email', 'tels']    
-admin.site.register(MyUser, UserAdmin)
+admin.site.register(Order,OrderAdmin)
+admin.site.register(MyUser)
 #admin.site.register(Description)
-
-class OrderAdmin(admin.ModelAdmin):    
-    list_display = ('status', 'total', 'date')
-    list_filter = ('status', 'total', 'date')
-    list_per_page = 50    
-    search_fields = ['status',]    
-    
-admin.site.register(Order, OrderAdmin)
