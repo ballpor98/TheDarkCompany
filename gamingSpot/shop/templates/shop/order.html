@@ -10,7 +10,7 @@
 <div class="after-navbar"></div>
 <div class="container">
 	<div class="row">
-	{% for value in list.items %}
+        {% for key,value in list.items %}
 		<div class="col-md-3">
 
 			<!-- PRICE ITEM -->
@@ -26,13 +26,10 @@
 					<li class="list-group-item"><i class="icon-ok text-danger"></i>
 					 Quantity : {{value.quantity}}</li>
 				</ul>
-				{% if forloop.counter|divisibleby:4 and not forloop.last %}
-				</div><div class="row">
-				{% endif %}				
 			</div>
 			<!-- /PRICE ITEM -->
 		</div>
-	{% endfor %}	
+        {% endfor %}	
 	</div>
 </div>
 <div class="before-footer"></div>
