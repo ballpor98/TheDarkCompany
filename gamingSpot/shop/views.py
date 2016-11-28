@@ -116,7 +116,3 @@ class RegisterView(View):
         except IntegrityError as e:
             messages.error(request, 'Useranme already exists', extra_tags='alert-danger')
             return render(request, self.template_name, forms)
-
-class LoginView(View):
-    template_name = "shop/login.html"
-
