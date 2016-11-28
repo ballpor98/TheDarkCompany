@@ -29,7 +29,7 @@ class OrderAdmin(admin.ModelAdmin):
     def test(modeladmin, request, queryset):
         selected = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
         ct = ContentType.objects.get_for_model(queryset.model)
-        return redirect("/shop/?id="+str(selected[0]))
+        return redirect("/shop/order/?id="+str(selected[0]))
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username','first_name','last_name','email','tels')
