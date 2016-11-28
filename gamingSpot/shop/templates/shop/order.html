@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="after-navbar"></div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+		<div class="col-md-8">
 
 			<!-- PRICE ITEM -->
 			<div class="panel price panel-red">
@@ -21,7 +22,8 @@
 				</div>
 				{% for key,value in list.items %}
 				<ul class="list-group list-group-flush text-center">
-					<li class="list-group-item"><i class="icon-ok text-danger"></i>{{ value.product_pk}} - {{value.quantity}}</li>
+					<li class="list-group-item"><i class="icon-ok text-danger"></i>
+					Product : {{ value.product_pk}} Quantity : {{value.quantity}}</li>
 				</ul>
 				{% endfor %}
 			</div>
@@ -29,4 +31,5 @@
 		</div>
 	</div>
 </div>
+<div class="before-footer"></div>
 {% endblock %}				
