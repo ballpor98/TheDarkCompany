@@ -1,3 +1,35 @@
-{% for key,value in list.items %}
-{{ key }}:{{ value.product_pk}}:{{ value.price }}:{{value.quantity}}
-{% endfor %}
+{% extends 'shop/base.html' %}
+{% load staticfiles %}
+{% load static %}
+
+% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/order.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+			<!-- PRICE ITEM -->
+			<div class="panel price panel-red">
+				<div class="panel-heading  text-center">
+				<h3>Order Detail</h3>
+				</div>
+				<div class="panel-body text-center">
+					<p class="lead" style="font-size:40px"><strong>{{ value.price }}</strong></p>
+				</div>
+				{% for key,value in list.items %}
+				<ul class="list-group list-group-flush text-center">
+					<li class="list-group-item"><i class="icon-ok text-danger"></i>{{ value.product_pk}} - {{value.quantity}}</li>
+				</ul>
+				{% endfor %}
+				<div class="panel-footer">
+					<a class="btn btn-lg btn-block btn-danger" href="#">BUY NOW!</a>
+				</div>
+			</div>
+			<!-- /PRICE ITEM -->
+		</div>
+	</div>
+</div>
+{% endblock %}				
