@@ -5,8 +5,21 @@
 <link rel="stylesheet" type="text/css" href="{% static 'shop/product.css' %}"/>
 {% endblock %}
 
-
 {% block content %}
+
+{% if messages%}
+    <div class="row" style="position: fixed; top:7%; left:25%; width:50%; z-index:1999; text-align:center;">
+        {% for message in messages %}
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert {{ message.extra_tags }} alert-dismissable flash-notification">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }} 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif%}
+
 <div class="containerproduct">
 <div class="row">
   <div class="after-navbar">

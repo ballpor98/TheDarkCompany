@@ -102,7 +102,7 @@
                                                     {% if ord.status == 'W' %}
                                                     <span class="SomeThingWrong">SomeThingWrong</span><br>
                                                     {% endif %}
-                                                    <p>{{ ord.id }}</p>
+                                                    <p><a href="{% url 'shop:order' %}?id={{ ord.id }}">check_list</a></p>
                                                 </div>
                                             </div>
                                         </td>
