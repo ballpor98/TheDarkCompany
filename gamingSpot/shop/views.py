@@ -11,6 +11,8 @@ from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Q
+from django.core.files import File
+
 
 import json
 from .models import *
@@ -69,16 +71,12 @@ class MemberView(View):
 class OrderView(View):
     template_name = "shop/order.html"
     def get(self, request):
-        cart = Cart(request.session)
-        o = Order(status='P',total=cart.total)
-        #data = cart.items_serializable
-        temp = ContentFile(json.dumps(cart.cart_serializable))
-        file_name = str(o.id) + ".json"
-        o.product_list.save(file_name,temp)
-        o.save()
-        #product_list=json.dumps(cart.cart_serializable())
-        cart.clear()
-        return HttpResponse(o.id)
+        order = Order.objects.get(id=request.GET.get('id'))
+        f = open(order.product_list.path)
+        myfile = f.read()
+        f.close()
+        myjson = json.loads(myfile)
+        return render(request,self.template_name,{'order':order,'list':myjson})
 
 class RegisterView(View):
     template_name = 'shop/regis.html'
