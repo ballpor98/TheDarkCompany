@@ -82,16 +82,27 @@
                                 <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">SomeThingWrong</button>                                
                             </div>
                         </div>
+
+                        {% for ord in order %}
+
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody>
-                                    <tr data-status="pagado">                       
+                                    <tr data-status="{{ ord.status }}">                       
                                         <td>
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <span class="media-meta">Date</span><br>
-                                                    <span class="Accepted">( Accepted )</span>                               
-                                                    <p class="summary">Productlist</p>
+                                                    <span class="media-meta">{{ ord.date }}</span><br>
+                                                    {% if ord.status == 'A' %}
+                                                    <span class="Accepted">Accepted</span><br>
+                                                    {% endif %}
+                                                    {% if ord.status == 'P' %}
+                                                    <span class="Pending">Pending</span><br>
+                                                    {% endif %}
+                                                    {% if ord.status == 'W' %}
+                                                    <span class="SomeThingWrong">SomeThingWrong</span><br>
+                                                    {% endif %}
+                                                    <p>{{ ord.id }}</p>
                                                 </div>
                                             </div>
                                         </td>
@@ -99,6 +110,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -41,7 +41,7 @@ class ProductView(generic.ListView):
         elif p_categories != None:
             return Product.objects.filter(categories=p_categories)
         elif p_search != None:
-            searchProduct = Product.objects.filter(Q(name__contains=p_search) | Q(brand__contains=p_search) | Q(categories__contains=p_search))
+            searchProduct = Product.objects.filter(Q(name__icontains=p_search) | Q(brand__icontains=p_search) | Q(categories__icontains=p_search))
             return searchProduct
         else:
             return Product.objects.all()
