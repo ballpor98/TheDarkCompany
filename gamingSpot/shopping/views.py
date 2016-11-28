@@ -64,5 +64,5 @@ class CheckoutView(View):
         o.product_list.save(file_name,temp)
         o.save()
         cart.clear()
-        return HttpResponse(o.id)
+        return redirect('/member/')
     
