@@ -37,9 +37,21 @@ class ProductView(generic.ListView):
         if p_brand is None and p_categories is None and p_search is None:
             return Product.objects.all()
         elif p_brand != None:
-            return Product.objects.filter(brand=p_brand)
+            searchProduct = Product.objects.filter(brand=p_brand)
+            if searchProduct:
+                messages.success(self.request,'Success search by brand, Enjoy shopping !',extra_tags='alert-success')
+                return searchProduct
+            else:
+                messages.error(self.request,'Search not found, Please try again !, This is all our product.',extra_tags='alert-danger')
+                return Product.objects.all()
         elif p_categories != None:
-            return Product.objects.filter(categories=p_categories)
+            searchProduct = Product.objects.filter(categories=p_categories)
+            if searchProduct:
+                messages.success(self.request,'Success search by categories, Enjoy shopping !',extra_tags='alert-success')
+                return searchProduct
+            else:
+                messages.error(self.request,'Search not found, Please try again !, This is all our product.',extra_tags='alert-danger')
+                return Product.objects.all()
         elif p_search != None:
             searchProduct = Product.objects.filter(Q(name__icontains=p_search) | Q(brand__icontains=p_search) | Q(categories__icontains=p_search))
             if searchProduct:
